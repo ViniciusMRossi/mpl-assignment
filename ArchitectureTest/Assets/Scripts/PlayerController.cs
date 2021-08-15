@@ -1,26 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _velocity;
+    [SerializeField] private float velocity;
+
+    private Rigidbody2D _playerRigidBody;
+
+    private void Start()
+    {
+        _playerRigidBody = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        var rbody = GetComponent<Rigidbody2D>();
-
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            rbody.velocity = Vector2.left * _velocity;
+            MoveLeft();
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
-            rbody.velocity = Vector2.right * _velocity;
+            StandStill();
         }
-        else
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            rbody.velocity = Vector2.zero;
+            MoveRight();
         }
+        else if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            StandStill();
+        }
+    }
+    public void MoveRight()
+    {
+        _playerRigidBody.velocity = Vector2.right * velocity;
+    }
+    public void MoveLeft()
+    {
+        _playerRigidBody.velocity = Vector2.left * velocity;
+    }
+    public void StandStill()
+    {
+        _playerRigidBody.velocity = Vector2.zero;
     }
 }

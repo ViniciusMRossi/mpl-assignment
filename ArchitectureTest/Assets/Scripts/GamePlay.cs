@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,9 +24,10 @@ public class GamePlay : MonoBehaviour
     public BallController Ball;
     public PlayerController Player;
 
-    public Text ScoreLabel;
-    public Text LivesLabel;
-    public Text GetReadyLabel;
+    public TextMeshProUGUI ScoreLabelTM;
+    public TextMeshProUGUI LivesLabelTM;
+    public TextMeshProUGUI GetReadyLabelTM;
+    public TextMeshProUGUI GetReadyCounterLabelTM;
 
     public uint Score = 0;
     public uint Lives = 3;
@@ -46,7 +48,8 @@ public class GamePlay : MonoBehaviour
 
     public void Goal()
     {
-        GetReadyLabel.enabled = true;
+        GetReadyLabelTM.enabled = true;
+        GetReadyCounterLabelTM.enabled = true;
         var pos1 = Player.transform.position;
         pos1.x = 0f;
         Player.transform.position = pos1;
@@ -54,8 +57,8 @@ public class GamePlay : MonoBehaviour
         Ball.transform.position = Vector3.zero;
         Ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-        ScoreLabel.text = GamePlay.Instance.Score.ToString();
-        LivesLabel.text = GamePlay.Instance.Lives.ToString();
+        ScoreLabelTM.text = "Score: " + GamePlay.Instance.Score.ToString();
+        LivesLabelTM.text = "Lives: " + GamePlay.Instance.Lives.ToString();
 
         StartCoroutine(StartGame());
     }
@@ -71,9 +74,17 @@ public class GamePlay : MonoBehaviour
 
     private IEnumerator StartGame()
     {
-        yield return new WaitForSeconds(3f);
+        GetReadyCounterLabelTM.text = "3";
+        yield return new WaitForSeconds(1f);
+        GetReadyCounterLabelTM.text = "2";
+        yield return new WaitForSeconds(1f);
+        GetReadyCounterLabelTM.text = "1";
+        yield return new WaitForSeconds(1f);
+        GetReadyCounterLabelTM.text = "GO!";
+        yield return new WaitForSeconds(0.5f);
 
-        GetReadyLabel.enabled = false;
+        GetReadyLabelTM.enabled = false;
+        GetReadyCounterLabelTM.enabled = false;
         _gameOver = false;
         Ball.Kick();
     }
@@ -93,8 +104,8 @@ public class GamePlay : MonoBehaviour
 
         if (_gameOver) return;
 
-        ScoreLabel.text = GamePlay.Instance.Score.ToString();
-        LivesLabel.text = GamePlay.Instance.Lives.ToString();
+        ScoreLabelTM.text = "Score: " + GamePlay.Instance.Score.ToString();
+        LivesLabelTM.text = "Lives: " + GamePlay.Instance.Lives.ToString();
 
         if (Score == Briks)
         {
