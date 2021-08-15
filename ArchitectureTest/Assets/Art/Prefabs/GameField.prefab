@@ -1097,9 +1097,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ball: {fileID: 114905379369930482}
   Player: {fileID: 114154914938394166}
-  levelScriptableObject: {fileID: 11400000, guid: b5309d49d03644d9a92b0e72c9073f18,
-    type: 2}
   brickSpawner: {fileID: 542324679}
+  levelsProvider: {fileID: 1967876413492788378, guid: e6f7458bce23e44a89fe98d4a34daab6,
+    type: 3}
   ScoreLabelTM: {fileID: 1021534523}
   LivesLabelTM: {fileID: 411372646}
   GetReadyLabelTM: {fileID: 1466732111}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,8 +26,8 @@ public class GamePlay : MonoBehaviour
     public BallController Ball;
     public PlayerController Player;
 
-    [SerializeField] private LevelScriptableObject levelScriptableObject;
     [SerializeField] private BrickSpawner brickSpawner;
+    [SerializeField] private LevelsProvider levelsProvider;
     public TextMeshProUGUI ScoreLabelTM;
     public TextMeshProUGUI LivesLabelTM;
     public TextMeshProUGUI GetReadyLabelTM;
@@ -36,7 +37,11 @@ public class GamePlay : MonoBehaviour
     public uint Lives = 3;
 
     private uint _bricksCount;
-    private bool _gameOver = false;
+    private bool _gameOver;
+    private bool _isGameRunning;
+
+    private TestanoidApplication _testanoidApplication;
+    private LevelScriptableObject _levelScriptableObject;
 
     private void Awake()
     {
@@ -49,11 +54,26 @@ public class GamePlay : MonoBehaviour
 
     private void Start()
     {
-        _bricksCount = levelScriptableObject.bricksCount;
-        Ball.Init(levelScriptableObject.ballSpeed);
-        brickSpawner.PopulateGrid(levelScriptableObject.brickLayout);
+        _testanoidApplication = TestanoidApplication.Instance;
+        
+        levelsProvider.LoadLevelAsync(_testanoidApplication.CurrentLevel, OnLevelLoad, OnLevelFailToLoad);
+    }
+
+    private void OnLevelLoad(LevelScriptableObject level)
+    {
+        _levelScriptableObject = level;
+        _bricksCount = _levelScriptableObject.bricksCount;
+        Ball.Init(_levelScriptableObject.ballSpeed);
+        brickSpawner.PopulateGrid(_levelScriptableObject.brickLayout);
+
+        _isGameRunning = true;
         
         Reset();
+    }
+
+    private void OnLevelFailToLoad()
+    {
+        
     }
 
     public void Goal()
@@ -76,7 +96,7 @@ public class GamePlay : MonoBehaviour
     {
         Score = 0;
         Lives = 3;
-        _bricksCount = levelScriptableObject.bricksCount;
+        _bricksCount = _levelScriptableObject.bricksCount;
 
         Goal();
     }
@@ -100,6 +120,7 @@ public class GamePlay : MonoBehaviour
 
     private void Update()
     {
+        if (!_isGameRunning) return;
 #if true //debug commands
         if (Input.GetKeyDown(KeyCode.Q))
         {
