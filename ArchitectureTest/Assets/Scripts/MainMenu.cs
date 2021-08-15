@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private void Update()
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space))
+    //     {
+    //         SceneManager.LoadScene("Gameplay");
+    //     }
+    // }
+
+    public void LoadGameScene()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("Gameplay");
-        }
+        // SceneManager.LoadScene("Gameplay");
+        Navigator.Instance.Navigate("Gameplay");
     }
 }
