@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,8 @@ public class GamePlay : MonoBehaviour
     public BallController Ball;
     public PlayerController Player;
 
+    [SerializeField] private LevelScriptableObject levelScriptableObject;
+    [SerializeField] private BrickSpawner brickSpawner;
     public TextMeshProUGUI ScoreLabelTM;
     public TextMeshProUGUI LivesLabelTM;
     public TextMeshProUGUI GetReadyLabelTM;
@@ -32,7 +35,7 @@ public class GamePlay : MonoBehaviour
     public uint Score = 0;
     public uint Lives = 3;
 
-    uint Briks = 4;
+    private uint _bricksCount;
     private bool _gameOver = false;
 
     private void Awake()
@@ -42,6 +45,13 @@ public class GamePlay : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        _bricksCount = levelScriptableObject.bricksCount;
+        Ball.Init(levelScriptableObject.ballSpeed);
+        brickSpawner.PopulateGrid(levelScriptableObject.brickLayout);
         
         Reset();
     }
@@ -54,8 +64,7 @@ public class GamePlay : MonoBehaviour
         pos1.x = 0f;
         Player.transform.position = pos1;
 
-        Ball.transform.position = Vector3.zero;
-        Ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        Ball.ResetPosition();
 
         ScoreLabelTM.text = "Score: " + GamePlay.Instance.Score.ToString();
         LivesLabelTM.text = "Lives: " + GamePlay.Instance.Lives.ToString();
@@ -67,7 +76,7 @@ public class GamePlay : MonoBehaviour
     {
         Score = 0;
         Lives = 3;
-        Briks = 4;
+        _bricksCount = levelScriptableObject.bricksCount;
 
         Goal();
     }
@@ -98,7 +107,7 @@ public class GamePlay : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            Score = Briks;
+            Score = _bricksCount;
         }
 #endif
 
@@ -107,7 +116,7 @@ public class GamePlay : MonoBehaviour
         ScoreLabelTM.text = "Score: " + GamePlay.Instance.Score.ToString();
         LivesLabelTM.text = "Lives: " + GamePlay.Instance.Lives.ToString();
 
-        if (Score == Briks)
+        if (Score == _bricksCount)
         {
             SceneManager.LoadScene("Win");
             _gameOver = true;

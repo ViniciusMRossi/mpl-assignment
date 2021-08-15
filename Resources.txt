@@ -5,3 +5,6 @@ License: Creative Commons Zero v1.0 Universal
 
 
 Color Palette: https://lospec.com/palette-list/supernova-7
+
+
+Editor script for tables: https://unitylist.com/p/fw5/2D-Array-Editor
