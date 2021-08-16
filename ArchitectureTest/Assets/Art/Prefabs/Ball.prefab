@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c267e81263efe499bb0e46e62e1890d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 6
+  ballTrailRenderer: {fileID: 1362535277}
 --- !u!1 &7218986491539189736
 GameObject:
   m_ObjectHideFlags: 0

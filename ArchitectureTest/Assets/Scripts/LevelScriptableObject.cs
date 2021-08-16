@@ -7,5 +7,6 @@ public class LevelScriptableObject : ScriptableObject
 {
     public uint bricksCount;
     public float ballSpeed;
+    public float playerSpeed;
     public Array2DBool brickLayout;
 }

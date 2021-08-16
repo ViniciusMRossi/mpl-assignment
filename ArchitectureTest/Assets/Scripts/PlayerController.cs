@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using System.IO.MemoryMappedFiles;
+using UnityEngine;
+using UnityEngine.WSA;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float velocity;
+    private float _velocity;
 
     private Rigidbody2D _playerRigidBody;
 
@@ -11,35 +14,28 @@ public class PlayerController : MonoBehaviour
         _playerRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void Init(float playerVelocity)
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            MoveLeft();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            StandStill();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            MoveRight();
-        }
-        else if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            StandStill();
-        }
+        _velocity = playerVelocity;
     }
-    public void MoveRight()
+
+    public void ManageMovement(bool isLeftPressed, bool isRightPressed)
     {
-        _playerRigidBody.velocity = Vector2.right * velocity;
-    }
-    public void MoveLeft()
-    {
-        _playerRigidBody.velocity = Vector2.left * velocity;
-    }
-    public void StandStill()
-    {
-        _playerRigidBody.velocity = Vector2.zero;
+        if (isLeftPressed && isRightPressed)
+        {
+            _playerRigidBody.velocity = Vector2.zero;
+        }
+        else if (isLeftPressed)
+        {
+            _playerRigidBody.velocity = Vector2.left * _velocity;
+        }
+        else if(isRightPressed)
+        {
+            _playerRigidBody.velocity = Vector2.right * _velocity;
+        }
+        else
+        {
+            _playerRigidBody.velocity = Vector2.zero;
+        }
     }
 }

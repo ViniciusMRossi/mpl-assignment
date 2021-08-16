@@ -28,6 +28,7 @@ public class GamePlay : MonoBehaviour
 
     [SerializeField] private BrickSpawner brickSpawner;
     [SerializeField] private LevelsProvider levelsProvider;
+    [SerializeField] private PlayerController playerController;
     public TextMeshProUGUI ScoreLabelTM;
     public TextMeshProUGUI LivesLabelTM;
     public TextMeshProUGUI GetReadyLabelTM;
@@ -64,6 +65,7 @@ public class GamePlay : MonoBehaviour
         _levelScriptableObject = level;
         _bricksCount = _levelScriptableObject.bricksCount;
         Ball.Init(_levelScriptableObject.ballSpeed);
+        playerController.Init(_levelScriptableObject.playerSpeed);
         brickSpawner.PopulateGrid(_levelScriptableObject.brickLayout);
 
         _isGameRunning = true;

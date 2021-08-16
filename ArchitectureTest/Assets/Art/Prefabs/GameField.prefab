@@ -1067,18 +1067,18 @@ EdgeCollider2D:
   m_GameObject: {fileID: 1978087241310088}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: ce456884e584d49ef809ac09d45d7e85, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -2.7873614, y: 5.020606}
-  - {x: -2.8008635, y: -5.7259183}
+  - {x: -2.8130202, y: 4.9930468}
+  - {x: -2.8105197, y: -5.7248206}
   - {x: 2.832075, y: -5.721356}
   - {x: 2.8222911, y: 4.9746366}
-  - {x: -2.8087034, y: 4.991415}
+  - {x: -2.8115544, y: 4.991415}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -1100,6 +1100,7 @@ MonoBehaviour:
   brickSpawner: {fileID: 542324679}
   levelsProvider: {fileID: 1967876413492788378, guid: e6f7458bce23e44a89fe98d4a34daab6,
     type: 3}
+  playerController: {fileID: 114154914938394166}
   ScoreLabelTM: {fileID: 1021534523}
   LivesLabelTM: {fileID: 411372646}
   GetReadyLabelTM: {fileID: 1466732111}
@@ -1191,21 +1192,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114154914642418746, guid: 93282317b771f4f9ca62e0b8ee4fc80e,
-        type: 3}
-      propertyPath: velocity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912184977976881521, guid: 93282317b771f4f9ca62e0b8ee4fc80e,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.6117647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912184977976881521, guid: 93282317b771f4f9ca62e0b8ee4fc80e,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.80784315
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93282317b771f4f9ca62e0b8ee4fc80e, type: 3}
 --- !u!4 &4642628010027516 stripped
@@ -1280,6 +1266,11 @@ PrefabInstance:
     - target: {fileID: 4011843885185824, guid: ba126b536cd254f439e8b83616958865, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50768033399316970, guid: ba126b536cd254f439e8b83616958865,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba126b536cd254f439e8b83616958865, type: 3}

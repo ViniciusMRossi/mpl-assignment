@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05b08e856070463eb1cd01a5ccaf395, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  bricksCount: 8
+  bricksCount: 7
   ballSpeed: 5
+  playerSpeed: 5
   brickLayout:
     gridSize: {x: 4, y: 2}
     cellSize: {x: 16, y: 16}
