@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e05b08e856070463eb1cd01a5ccaf395, type: 3}
-  m_Name: Level1
+  m_Name: Level2
   m_EditorClassIdentifier: 
-  bricksCount: 4
+  bricksCount: 16
   ballSpeed: 5
   playerSpeed: 5
   brickLayout:
-    gridSize: {x: 4, y: 1}
+    gridSize: {x: 4, y: 4}
     cellSize: {x: 16, y: 16}
     cells:
+    - row: 01010101
+    - row: 01010101
+    - row: 01010101
     - row: 01010101

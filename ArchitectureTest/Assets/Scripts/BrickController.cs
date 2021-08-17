@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BrickController : MonoBehaviour
 {
@@ -10,6 +7,13 @@ public class BrickController : MonoBehaviour
 
     private Collider2D _brickCollider;
     private Rigidbody2D _brickRigidBody;
+
+    private GamePlay _gamePlayInstance;
+
+    public void Constructor(GamePlay gamePlayInstance)
+    {
+        _gamePlayInstance = gamePlayInstance;
+    }
 
     private void Start()
     {
@@ -20,8 +24,7 @@ public class BrickController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Explode();
-        var game = GamePlay.Instance;
-        game.Score++;
+        _gamePlayInstance.OnScore();
     }
 
     private void Explode()

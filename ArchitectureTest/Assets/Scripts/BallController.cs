@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class BallController : MonoBehaviour
 {
-    [Header("References")] [SerializeField]
-    private TrailRenderer ballTrailRenderer;
+    [Header("References")] 
+    [SerializeField] private TrailRenderer ballTrailRenderer;
+    [SerializeField] private GameObject explosionParticlesGO;
+    [SerializeField] private SpriteRenderer graphicSpriteRenderer;
     
     private float _speed;
     private Rigidbody2D _ballRigidbody;
+    private Collider2D _ballCollider;
 
     private void Awake()
     {
         ballTrailRenderer.enabled = false;
         _ballRigidbody = GetComponent<Rigidbody2D>();
+        _ballCollider = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -30,6 +35,36 @@ public class BallController : MonoBehaviour
     {
         ballTrailRenderer.enabled = true;
         SetVelocity(GenerateInitialKickAngle() * _speed);
+    }
+
+    public void Explode()
+    {
+        StartCoroutine(ExplodeAfterDelay());
+    }
+
+    private IEnumerator ExplodeAfterDelay()
+    {
+        ballTrailRenderer.Clear();
+        ballTrailRenderer.enabled = false;
+        _ballCollider.enabled = false;
+        SetVelocity(Vector2.zero);
+
+        FadeGraphic();
+        yield return new WaitForSeconds(0.2f);
+        explosionParticlesGO.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+
+    private void FadeGraphic()
+    {
+        var graphicColor = graphicSpriteRenderer.color;
+        LeanTween.value(1, 0, 0.5f)
+            .setOnUpdate(deltaAlpha =>
+            {
+                graphicSpriteRenderer.color =
+                    new Color(graphicColor.r, graphicColor.g, graphicColor.b, deltaAlpha);
+            });
     }
 
     private Vector2 GenerateInitialKickAngle()

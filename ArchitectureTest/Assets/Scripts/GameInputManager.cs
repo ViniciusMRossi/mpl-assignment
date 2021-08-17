@@ -14,19 +14,19 @@ public class GameInputManager : MonoBehaviour
 
     private void ManageInputs()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             OnLeftPressed();
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        else if (!Input.GetKey(KeyCode.LeftArrow))
         {
             OnLeftReleased();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             OnRightPressed();
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        else if (!Input.GetKey(KeyCode.RightArrow))
         {
             OnRightReleased();
         }

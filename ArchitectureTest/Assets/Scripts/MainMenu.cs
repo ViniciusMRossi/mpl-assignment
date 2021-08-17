@@ -1,21 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         SceneManager.LoadScene("Gameplay");
-    //     }
-    // }
-
     public void LoadGameScene()
     {
-        // SceneManager.LoadScene("Gameplay");
-        Navigator.Instance.Navigate("Gameplay");
+        Navigator.Instance.Navigate(Constants.Scenes.GamePlayScene);
     }
 }

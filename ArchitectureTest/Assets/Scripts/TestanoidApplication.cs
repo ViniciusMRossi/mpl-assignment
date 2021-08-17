@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -28,5 +29,10 @@ public class TestanoidApplication
     {
         get;
         private set;
+    }
+
+    public void IncrementCurrentLevel()
+    {
+        CurrentLevel++;
     }
 }

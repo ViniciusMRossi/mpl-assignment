@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6857501042380986825
+--- !u!1 &7492911808406757003
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1734498946225133443}
-  - component: {fileID: 1967876413492788378}
+  - component: {fileID: 7375285251241495581}
+  - component: {fileID: 3119722083797743376}
   m_Layer: 0
-  m_Name: LevelsProvider
+  m_Name: DialogProvider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1734498946225133443
+--- !u!4 &7375285251241495581
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6857501042380986825}
+  m_GameObject: {fileID: 7492911808406757003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.050343513, z: 0}
+  m_LocalPosition: {x: 3679.7197, y: 1171.3325, z: -67.977974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1967876413492788378
+--- !u!114 &3119722083797743376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6857501042380986825}
+  m_GameObject: {fileID: 7492911808406757003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9793d4b07ee440a49ba04c7b5f97640b, type: 3}
+  m_Script: {fileID: 11500000, guid: a0abde4abcd9341d4b3a3bbd933463a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelsAddressables:
-  - m_AssetGUID: b5309d49d03644d9a92b0e72c9073f18
+  winDialogAddressable:
+    m_AssetGUID: 8cdbb6c07d7754121aaaef5af17b66ff
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  - m_AssetGUID: 7d6d6f41814f04674bcebded62c90e69
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 7ffbd12a1d3484cb5b1cf56524c4b390
+  loseDialogAddressable:
+    m_AssetGUID: 328190604effe4d0aa46d52ab94ce985
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

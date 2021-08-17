@@ -36,7 +36,7 @@ public class BrickSpawner : MonoBehaviour
         _rowsDistance = Math.Abs(_spawnFirstRowHeightPosition.y) - Math.Abs(_spawnSecondRowHeightPosition.y);
     }
 
-    public void PopulateGrid(Array2DBool brickLayout)
+    public void PopulateGrid(Array2DBool brickLayout, GamePlay gamePlayInstance)
     {
         var rowsCount = brickLayout.GridSize.y;
         var columnsCount = brickLayout.GridSize.x;
@@ -58,10 +58,12 @@ public class BrickSpawner : MonoBehaviour
                     _spawnFirstRowHeightPosition.y - _rowsDistance * i,
                     _spawnFirstRowHeightPosition.z);
 
-                var brick = Instantiate(brickPrefab, transform).transform;
-                brick.position = spawnPosition;
-                var brickScale = brick.localScale;
-                brick.localScale = new Vector3(brickScale.x * bricksXScale, brickScale.y, brickScale.z);
+                var brickGO = Instantiate(brickPrefab, transform);
+                brickGO.GetComponent<BrickController>().Constructor(gamePlayInstance);
+                
+                brickGO.transform.position = spawnPosition;
+                var brickScale = brickGO.transform.localScale;
+                brickGO.transform.localScale = new Vector3(brickScale.x * bricksXScale, brickScale.y, brickScale.z);
             }
         }
     }

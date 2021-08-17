@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
+    private GamePlay _gamePlayInstance;
+    public void Constructor(GamePlay gamePlayInstance)
+    {
+        _gamePlayInstance = gamePlayInstance;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GamePlay.Instance.Lives--;
-        GamePlay.Instance.Goal();
+        _gamePlayInstance.OnBallHitDeathZone();
     }
 }

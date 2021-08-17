@@ -10,28 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: LevelsGroup
+  m_Name: Dialogs
   m_EditorClassIdentifier: 
-  m_GroupName: LevelsGroup
+  m_GroupName: Dialogs
   m_Data:
     m_SerializedData: []
-  m_GUID: 59fdae3e85d8049a6926e7efadd1709f
+  m_GUID: 3e77503eacdb04246a4a746133b9e95d
   m_SerializeEntries:
-  - m_GUID: b5309d49d03644d9a92b0e72c9073f18
-    m_Address: Assets/ScriptableObjects/Level1.asset
+  - m_GUID: 328190604effe4d0aa46d52ab94ce985
+    m_Address: Assets/Prefabs/Dialogs/LoseDialog.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7d6d6f41814f04674bcebded62c90e69
-    m_Address: Assets/ScriptableObjects/Level2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7ffbd12a1d3484cb5b1cf56524c4b390
-    m_Address: Assets/ScriptableObjects/Level3.asset
+  - m_GUID: 8cdbb6c07d7754121aaaef5af17b66ff
+    m_Address: Assets/Prefabs/Dialogs/WinDialog.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 413f5471a90ae4a799b895a065addc76, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 9238bc15ca6be4bffbe95691e4e6c51b, type: 2}
-    - {fileID: 11400000, guid: 0bbc6497099d54d1bac28006a7c86317, type: 2}
+    - {fileID: 11400000, guid: 0547e40e736a449bda953bd1990db4c8, type: 2}
+    - {fileID: 11400000, guid: 434e875c8a8ca43c49abead74b3068e9, type: 2}

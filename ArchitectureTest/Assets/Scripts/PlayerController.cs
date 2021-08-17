@@ -9,18 +9,26 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _playerRigidBody;
 
+    private GamePlay _gamePlayInstance;
+
     private void Start()
     {
         _playerRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    public void Init(float playerVelocity)
+    public void Constructor(float playerVelocity, GamePlay gamePlayInstance)
     {
+        _gamePlayInstance = gamePlayInstance;
         _velocity = playerVelocity;
     }
 
     public void ManageMovement(bool isLeftPressed, bool isRightPressed)
     {
+        if (_gamePlayInstance != null && !_gamePlayInstance.IsGameRunning)
+        {
+            return;
+        }
+        
         if (isLeftPressed && isRightPressed)
         {
             _playerRigidBody.velocity = Vector2.zero;
