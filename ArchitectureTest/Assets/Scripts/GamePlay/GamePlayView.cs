@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace GamePlay
 {
+    //GamePlayView is responsible for controlling the MonoBehaviours that compose the game and
+    //for the communication with the business logic in 'Game.cs'
     public class GamePlayView : MonoBehaviour, IGamePlayView
     {
         [Header("References")]
@@ -45,7 +47,7 @@ namespace GamePlay
 
             readyLabelTM.enabled = false;
             readyCounterLabelTM.enabled = false;
-            ballController.Kick();
+            ballController.ApplyInitialKick();
         }
         private IEnumerator OnWin()
         {

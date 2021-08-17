@@ -6,7 +6,9 @@ namespace Providers
 {
     public class DialogProvider : MonoBehaviour
     {
+        [Tooltip("Asset reference of the WinDialogPrefab.")]
         [SerializeField] private AssetReference winDialogAddressable;
+        [Tooltip("Asset reference of the LoseDialogPrefab.")]
         [SerializeField] private AssetReference loseDialogAddressable;
 
         public void ShowWinDialog()

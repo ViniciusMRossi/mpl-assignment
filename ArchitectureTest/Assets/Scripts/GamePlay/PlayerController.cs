@@ -5,6 +5,7 @@ namespace GamePlay
 {
     public class PlayerController : MonoBehaviour
     {
+        [Tooltip("How much the angle of the ball will deviate once it hits the moving player paddle.")]
         [SerializeField] private float ballDeviation;
         
         private float _velocity;

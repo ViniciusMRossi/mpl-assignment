@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace GamePlay
 {
+    //This class is responsible for all user interactions with the game
     public class GameInputManager : MonoBehaviour
     {
         [Header("References")] 
@@ -17,6 +18,7 @@ namespace GamePlay
             ManageInputs();
         }
 
+        #region Keyboard Inputs
         private void ManageInputs()
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
@@ -59,6 +61,9 @@ namespace GamePlay
             }
 #endif
         }
+        #endregion
+
+        #region Mobile Inputs
         public void OnRightPressed()
         {
             _isUsingMobileControllers = true;
@@ -77,5 +82,6 @@ namespace GamePlay
         {
             _isLeftPressed = false;
         }
+        #endregion
     }
 }

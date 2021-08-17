@@ -4,6 +4,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Utils
 {
+    //This class streamlines the use of Addressables
     public static class AddressableLoader
     {
         public static void LoadAssetReference<T>(AssetReference assetReference, Action<T> onSuccess, Action onFailure)

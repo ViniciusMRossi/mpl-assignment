@@ -1,5 +1,6 @@
 namespace GamePlay
 {
+    //Data class to represent relevant data for the game
     public class GamePlayData
     {
         public uint Score

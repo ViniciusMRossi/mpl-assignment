@@ -7,12 +7,18 @@ namespace GamePlay
     public class BrickSpawner : MonoBehaviour
     {
         [Header("Values")]
+        [Tooltip("How many columns of the standard brick prefab can the Playing Field accomodate")]
         [SerializeField] private int defaultGridWidth = 4;
     
+        //I like to use these kinds of position by reference to make it easier to modify sizes and positions
         [Header("References")]
+        [Tooltip("A transform with position on the left playing filed wall")]
         [SerializeField] private Transform leftWallPositionTransform;
+        [Tooltip("A transform with position on the right playing filed wall")]
         [SerializeField] private Transform rightWallPositionTransform;
+        [Tooltip("A transform with position on the first row of bricks height")]
         [SerializeField] private Transform firstRowSpawnHeightPositionTransform;
+        [Tooltip("A transform with position on the second row of bricks height")]
         [SerializeField] private Transform secondRowSpawnHeightPositionTransform;
     
         [Header("Prefabs")]
@@ -21,6 +27,7 @@ namespace GamePlay
         private Vector3 _spawnFirstRowHeightPosition;
         private Vector3 _spawnSecondRowHeightPosition;
 
+        
         private float _leftStartXPosition;
         private float _rightStartXPosition;
         private float _gameFieldWidth;
@@ -68,7 +75,8 @@ namespace GamePlay
                 }
             }
         }
-
+        
+        //Bricks need to be bigger or smaller depending on the column count
         private float CalculateBricksWidthScale(int columnsCount)
         {
             return (float)defaultGridWidth / (float)columnsCount;

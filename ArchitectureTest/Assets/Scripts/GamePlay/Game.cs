@@ -4,6 +4,8 @@ using Providers;
 
 namespace GamePlay
 {
+    //The game class holds the business logic of the game. this allows flexibility in the layout and
+    //testability of the code
     public class Game
     {
         private GamePlayData _gamePlayData;
@@ -13,8 +15,7 @@ namespace GamePlay
         public bool IsGameRunning { get; private set; }
 
         private LevelScriptableObject _levelScriptableObject;
-
-
+        
         public Game(IGamePlayView gamePlayView, LevelsProvider levelsProvider)
         {
             _gamePlayView = gamePlayView;
@@ -25,12 +26,13 @@ namespace GamePlay
                 _gamePlayView.NavigateToMainMenu);
         }
 
+#region Debug
         public void DebugLose()
         {
             _gamePlayData.Lives = 0;
             OnLose();
         }
-
+        
         public void DebugWin()
         {
             _gamePlayData.Score = _bricksCount;
@@ -39,12 +41,7 @@ namespace GamePlay
 
             OnWin();
         }
-
-        private void ResetBallAndPlayer()
-        {
-            _gamePlayView.ResetBallAndPlayer(_gamePlayData.Lives);
-        }
-
+#endregion
         public void OnBallHitDeathZone()
         {
             _gamePlayData.Lives--;
@@ -59,17 +56,6 @@ namespace GamePlay
             }
         }
 
-        private void OnLose()
-        {
-            IsGameRunning = false;
-            _gamePlayView.LoseGame();
-        }
-
-        private void OnWin()
-        {
-            _gamePlayView.Win();
-        }
-
         public void OnScore()
         {
             _gamePlayData.Score++;
@@ -80,6 +66,17 @@ namespace GamePlay
             {
                 OnWin();
             }
+        }
+
+        private void OnLose()
+        {
+            IsGameRunning = false;
+            _gamePlayView.LoseGame();
+        }
+
+        private void OnWin()
+        {
+            _gamePlayView.Win();
         }
 
         private void OnLevelLoad(LevelScriptableObject level)
@@ -103,7 +100,7 @@ namespace GamePlay
             _gamePlayData.Lives = _levelScriptableObject.livesCount;
             _bricksCount = _levelScriptableObject.bricksCount;
 
-            ResetBallAndPlayer();
+            _gamePlayView.ResetBallAndPlayer(_gamePlayData.Lives);
         }
     }
 }

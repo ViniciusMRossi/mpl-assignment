@@ -9,6 +9,7 @@ namespace Providers
 {
     public class LevelsProvider : MonoBehaviour
     {
+        [Tooltip("List of asset references of the LevelScriptableObject.")]
         [SerializeField] private List<AssetReference> levelsAddressables;
         public int LevelsCount => levelsAddressables.Count;
 
