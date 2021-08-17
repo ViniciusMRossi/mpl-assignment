@@ -1394,7 +1394,7 @@ PrefabInstance:
     - target: {fileID: 2562827778160980651, guid: e2d60093fe80c48c189e6fa88173b17f,
         type: 3}
       propertyPath: m_Name
-      value: Button
+      value: NextLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 2562827778160980652, guid: e2d60093fe80c48c189e6fa88173b17f,
         type: 3}

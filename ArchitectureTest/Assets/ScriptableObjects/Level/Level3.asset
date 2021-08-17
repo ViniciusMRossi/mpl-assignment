@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05b08e856070463eb1cd01a5ccaf395, type: 3}
+  m_Name: Level3
+  m_EditorClassIdentifier: 
+  bricksCount: 11
+  livesCount: 5
+  ballSpeed: 5
+  playerSpeed: 5
+  brickLayout:
+    gridSize: {x: 7, y: 3}
+    cellSize: {x: 16, y: 16}
+    cells:
+    - row: 01000100010001
+    - row: 00010001000100
+    - row: 01000100010001
