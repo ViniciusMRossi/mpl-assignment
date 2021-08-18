@@ -20,6 +20,17 @@ Key points:
 
 Summary of major changes:
 
+MainMenu:
+- Restructure the hierarchy of Main Menu and Gameplay scenes
+- Remade Main Menu UI
+- Configured a good canvas scaler that display the application correctly on smartphones and tablets. It can also work on landscape monitors.
+- Recreated the gameplay interface, added effects and particles
+- Added support for multiple levels
+- Added mobile controls. Keyboards can still be used
+- Created a color palette
+- Created a navigation and scene transition component "Navigator.cs" and "SceneTransitionCanvas.prefab"
+
+Project Structure and tools:
 - Created project with .gitignore
 - Updated the project to Unity 2020.3 LTS to be able to use some new features
 - Added the following packages:
@@ -28,24 +39,18 @@ Summary of major changes:
 	- Device simulator: it is a better option run the game in the editor in comparison to the Game window. It is not available for unity 2018
 - Changed the build target to Android. I wanted to make a mobile app and iOS would require a lot of extra steps to distribute the game
 - Imported a 'Creative Commons Zero v1.0 Universal' licensed font: https://kylamber.itch.io/diman-squares
-- There was no adition of any other art asset. The sprites used are Unity's default
+- There was no addition of any other art asset. The sprites used are Unity's default
 - Reorganized folder structure
-- Configured a good canvas scaler that display the application correctly on smartphones and tablets. It can also work on landscape monitors but it is not well tested
-- Created a color palette
-- Restructure the hierarchy of Main Menu and Gameplay scenes
-- Remade Main Menu UI
-- Created a navigation and scene transition component "Navigator.cs" and "SceneTransitionCanvas.prefab"
+
+Gameplay:
 - Updated ball and player prefabs to use sprites instead of mesh
-- Recreated the gameplay interface, added effects and particles
-- Created a component responsible for user input "GameInputManager.cs"
 - Distributed the responsibilities of "GamePlay.cs" with "PlayerController.cs" and "BallController.cs"
+- Created a component responsible for user input "GameInputManager.cs"
 - Changed the GamePlay scene to load levels from a scriptable object
-- Added mobile controls. Keyboards can still be used
+- Added a simple level editor as a scriptable object "LevelScriptableObject.cs"
 - Created a Level Provider that takes advantage of addressables "LevelsProvider.cs"
 - Switch win and lose scene for dialogs
 - Created a Dialog Provider that takes advantage of addressables "DialogProvider.cs". The advantage of using this structure is that we can show dialogs with no memory and processing impact during gameplay
-- Added support for multiple levels
-- Added a simple level editor as a scriptable object "LevelScriptableObject.cs"
 - Cleanup the code, remove small unrecommended practices like "GetComponent()" inside update, physics operation inside "FixedUpdate()" instead "Update()", etc
 - Gameplay used a singleton pattern that was causing all sorts of problems I removed it
 - Separate "Gameplay.cs" into "Game.cs" for business logic, "GameplayData.cs" for data, and "GameplayView.cs" for presentation. "IGameplayView.cs" was the interface used as a contract
