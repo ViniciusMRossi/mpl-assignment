@@ -1,0 +1,60 @@
+
+Key points:
+
+- KISS principle
+	- The application is now easier to read, understand, and maintain
+	- The art also follow the principle. Simple shapes, animations, and effects add a lot to the project without the need for professional art
+
+- Decoupling data and representation
+	- The GamePlay class was very confusing. The new structure isolates data, business logic, and views
+
+- Composition over inheritance
+	- Composition is one of the cornerstones of good unity design and I used it throughout the project 
+
+- Single responsibility principle
+	- The GamePlay class had a lot of responsibilities and I divided then with other classes
+
+- Application of design patterns where possible
+	- Design patterns were applied where needed, you will find implemented the Observer pattern, Provider pattern, and Singleton pattern
+
+
+Summary of major changes:
+
+- Created project with .gitignore
+- Updated the project to Unity 2020.3 LTS to be able to use some new features
+- Added the following packages:
+	- TextMesh pro: a better option for text
+	- LeanTween: for animations and interpolation. UI animations using the animator may slow down the game because the canvas redraw every frame
+	- Device simulator: it is a better option run the game in the editor in comparison to the Game window. It is not available for unity 2018
+- Changed the build target to Android. I wanted to make a mobile app and iOS would require a lot of extra steps to distribute the game
+- Imported a 'Creative Commons Zero v1.0 Universal' licensed font: https://kylamber.itch.io/diman-squares
+- There was no adition of any other art asset. The sprites used are Unity's default
+- Reorganized folder structure
+- Configured a good canvas scaler that display the application correctly on smartphones and tablets. It can also work on landscape monitors but it is not well tested
+- Created a color palette
+- Restructure the hierarchy of Main Menu and Gameplay scenes
+- Remade Main Menu UI
+- Created a navigation and scene transition component "Navigator.cs" and "SceneTransitionCanvas.prefab"
+- Updated ball and player prefabs to use sprites instead of mesh
+- Recreated the gameplay interface, added effects and particles
+- Created a component responsible for user input "GameInputManager.cs"
+- Distributed the responsibilities of "GamePlay.cs" with "PlayerController.cs" and "BallController.cs"
+- Changed the GamePlay scene to load levels from a scriptable object
+- Added mobile controls. Keyboards can still be used
+- Created a Level Provider that takes advantage of addressables "LevelsProvider.cs"
+- Switch win and lose scene for dialogs
+- Created a Dialog Provider that takes advantage of addressables "DialogProvider.cs". The advantage of using this structure is that we can show dialogs with no memory and processing impact during gameplay
+- Added support for multiple levels
+- Added a simple level editor as a scriptable object "LevelScriptableObject.cs"
+- Cleanup the code, remove small unrecommended practices like "GetComponent()" inside update, physics operation inside "FixedUpdate()" instead "Update()", etc
+- Gameplay used a singleton pattern that was causing all sorts of problems I removed it
+- Separate "Gameplay.cs" into "Game.cs" for business logic, "GameplayData.cs" for data, and "GameplayView.cs" for presentation. "IGameplayView.cs" was the interface used as a contract
+- Build the game for Android
+
+
+Final considerations:
+
+My goal with this project was to demonstrate my skills as a programmer and my knowledge of the Unity engine, I believe that even a small project like benefits a lot from techniques like Addressables and Scriptable objects.
+If you have any question feel free to contact me at vinimrossi@gmail.com
+
+Thanks for your time!
